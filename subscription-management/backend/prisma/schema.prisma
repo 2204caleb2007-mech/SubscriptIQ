@@ -1,0 +1,199 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  role      String    @default("CUSTOMER") // ADMIN, INTERNAL, CUSTOMER
+  avatar    String?
+  company   String?
+  status    String    @default("active")
+  lastLogin DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  category    String
+  price       Float
+  imageUrl    String?
+  stock       Int      @default(0)
+  status      String   @default("active")
+  variants    Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  plans       Plan[]
+  orderItems  OrderItem[]
+
+  @@map("products")
+}
+
+model Plan {
+  id            String         @id @default(cuid())
+  name          String
+  productId     String
+  product       Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  billing       String         // MONTHLY, YEARLY
+  price         Float
+  subscribers   Int            @default(0)
+  status        String         @default("active")
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  subscriptions Subscription[]
+
+  @@map("plans")
+}
+
+model Customer {
+  id            String         @id @default(cuid())
+  name          String
+  email         String         @unique
+  company       String?
+  status        String         @default("active")
+  totalSpent    Float          @default(0)
+  joinDate      DateTime       @default(now())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  subscriptions Subscription[]
+  invoices      Invoice[]
+  orders        Order[]
+
+  @@map("customers")
+}
+
+model Subscription {
+  id          String    @id @default(cuid())
+  customerId  String
+  customer    Customer  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  planId      String
+  plan        Plan      @relation(fields: [planId], references: [id], onDelete: Restrict)
+  status      String    @default("DRAFT") // DRAFT, QUOTATION, ACTIVE, CANCELLED
+  startDate   DateTime?
+  nextBilling DateTime?
+  mrr         Float
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  invoices    Invoice[]
+
+  @@map("subscriptions")
+}
+
+model Invoice {
+  id             String    @id @default(cuid())
+  subscriptionId String
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  customerId     String
+  customer       Customer  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  amount         Float
+  status         String    @default("PENDING") // PENDING, PAID, OVERDUE, VOID
+  dueDate        DateTime
+  paidDate       DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  payments       Payment[]
+  order          Order?
+
+  @@map("invoices")
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  invoiceId String
+  invoice   Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  amount    Float
+  method    String   // CREDIT_CARD, BANK_TRANSFER, WIRE_TRANSFER
+  status    String   @default("completed")
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("payments")
+}
+
+model Discount {
+  id         String    @id @default(cuid())
+  name       String
+  code       String    @unique
+  type       String    // PERCENTAGE, FIXED
+  value      Float
+  status     String    @default("active")
+  usageCount Int       @default(0)
+  maxUses    Int?
+  validUntil DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@map("discounts")
+}
+
+model Tax {
+  id        String   @id @default(cuid())
+  name      String
+  rate      Float
+  region    String
+  status    String   @default("active")
+  appliesTo String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("taxes")
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  customerId      String
+  customer        Customer    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  items           OrderItem[]
+  totalAmount     Float
+  currency        String      @default("INR")
+  status          String      @default("PENDING") // PENDING, PAID, FAILED, CANCELLED
+  paymentMethod   String?     // RAZORPAY, etc.
+  razorpayOrderId String?
+  invoiceId       String?     @unique
+  invoice         Invoice?    @relation(fields: [invoiceId], references: [id])
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float
+  total     Float
+
+  @@map("order_items")
+}
+
+model AutomationLog {
+  id          String   @id @default(cuid())
+  workflow    String   // e.g., "Invoice Generation", "Payment Reminder", "Subscription Renewal", "Churn Analysis"
+  action      String   // e.g., "Invoice Generated", "Reminder Sent", etc.
+  target      String   // e.g., "INV-2025-003", "23 customers", "All customers"
+  records     Int      @default(0)
+  status      String   @default("completed") // completed, running, failed
+  triggeredAt DateTime @default(now())
+  duration    String?  // e.g., "1.2s"
+  createdAt   DateTime @default(now())
+
+  @@map("automation_logs")
+}
