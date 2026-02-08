@@ -1,0 +1,146 @@
+[
+  {
+    "date": "2025-11-01",
+    "amount": 129.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-11-05",
+    "amount": 2500.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-11-12",
+    "amount": 49.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-11-15",
+    "amount": 129.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-11-20",
+    "amount": 5000.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-12-01",
+    "amount": 129.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-12-02",
+    "amount": 299.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-12-10",
+    "amount": 0.00,
+    "email": "customer@subscriptiq.com",
+    "status": "failed"
+  },
+  {
+    "date": "2025-12-15",
+    "amount": 129.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-12-24",
+    "amount": 800.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-12-25",
+    "amount": 150.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-01-01",
+    "amount": 129.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-01-05",
+    "amount": 3500.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-01-15",
+    "amount": 129.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-01-20",
+    "amount": 450.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-01-28",
+    "amount": 99.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-02-01",
+    "amount": 129.99,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-02-02",
+    "amount": 250.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-02-05",
+    "amount": 6000.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-02-06",
+    "amount": 1500.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-02-07",
+    "amount": 200.00,
+    "email": "customer@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-11-03",
+    "amount": 500.00,
+    "email": "admin@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2025-12-12",
+    "amount": 1200.00,
+    "email": "admin@subscriptiq.com",
+    "status": "completed"
+  },
+  {
+    "date": "2026-01-10",
+    "amount": 3000.00,
+    "email": "admin@subscriptiq.com",
+    "status": "completed"
+  }
+]

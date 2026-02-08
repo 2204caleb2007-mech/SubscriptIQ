@@ -1,0 +1,22 @@
+# Dependencies
+**/node_modules
+**/dist
+**/dist-ssr
+
+# Environments
+**/.env
+**/.env.local
+**/token.txt
+
+# Databases
+**/dev.db
+**/dev.db-journal
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
