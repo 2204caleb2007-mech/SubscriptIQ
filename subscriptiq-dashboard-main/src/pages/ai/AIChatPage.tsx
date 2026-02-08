@@ -3,8 +3,12 @@ import { motion } from 'framer-motion';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+<<<<<<< HEAD
 import { Brain, Send, Sparkles, User, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
+=======
+import { Brain, Send, Sparkles, User } from 'lucide-react';
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
 const mockResponses = [
   "I can help you understand your billing and invoices. What would you like to know?",
@@ -34,6 +38,7 @@ const AIChatPage = () => {
 
   return (
     <DashboardLayout>
+<<<<<<< HEAD
       <div className="max-w-4xl mx-auto h-[calc(100vh-120px)] flex flex-col relative">
         {/* Subtle Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10" />
@@ -85,11 +90,40 @@ const AIChatPage = () => {
               {msg.role === 'user' && (
                 <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shrink-0 shadow-md">
                   <User className="w-5 h-5 text-white" />
+=======
+      <div className="max-w-3xl mx-auto h-[calc(100vh-140px)] flex flex-col">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-xl bg-gradient-accent flex items-center justify-center">
+            <Brain className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold">AI Assistant</h1>
+            <p className="text-sm text-muted-foreground">Ask me anything about your subscription</p>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-y-auto space-y-4 mb-4 custom-scrollbar">
+          {messages.map((msg, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+              className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
+              {msg.role === 'ai' && (
+                <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center shrink-0">
+                  <Sparkles className="w-4 h-4 text-white" />
+                </div>
+              )}
+              <div className={`chat-bubble ${msg.role === 'user' ? 'chat-bubble-user' : 'chat-bubble-ai'}`}>
+                {msg.content}
+              </div>
+              {msg.role === 'user' && (
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <User className="w-4 h-4 text-white" />
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
                 </div>
               )}
             </motion.div>
           ))}
           {isTyping && (
+<<<<<<< HEAD
             <div className="flex gap-4">
               <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shadow-md">
                 <Sparkles className="w-5 h-5 text-white" />
@@ -100,11 +134,24 @@ const AIChatPage = () => {
                   <motion.span animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
                   <motion.span animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1.5 h-1.5 bg-primary rounded-full" />
                 </div>
+=======
+            <div className="flex gap-3">
+              <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-white" />
+              </div>
+              <div className="chat-bubble chat-bubble-ai">
+                <span className="flex gap-1">
+                  <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
+                  <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce delay-100" />
+                  <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce delay-200" />
+                </span>
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
               </div>
             </div>
           )}
         </div>
 
+<<<<<<< HEAD
         <div className="space-y-4 bg-background/50 backdrop-blur-sm p-4 rounded-3xl border border-border shadow-2xl">
           <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar scroll-smooth">
             {suggestions.map((s, i) => (
@@ -135,6 +182,20 @@ const AIChatPage = () => {
               <Send className="w-5 h-5 text-white" />
             </Button>
           </div>
+=======
+        <div className="flex gap-2 mb-4 flex-wrap">
+          {suggestions.map((s, i) => (
+            <Button key={i} variant="outline" size="sm" onClick={() => { setInput(s); }}>{s}</Button>
+          ))}
+        </div>
+
+        <div className="flex gap-2">
+          <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask me anything..."
+            onKeyDown={(e) => e.key === 'Enter' && sendMessage()} className="flex-1" />
+          <Button onClick={sendMessage} className="bg-gradient-primary border-0">
+            <Send className="w-4 h-4" />
+          </Button>
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         </div>
       </div>
     </DashboardLayout>

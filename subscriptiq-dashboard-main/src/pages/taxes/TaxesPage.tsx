@@ -9,7 +9,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import api from '@/lib/api';
 import { toast } from 'sonner';
+<<<<<<< HEAD
 import { Loader2, Plus, Calculator, Globe, Edit, Trash2, Library, BookOpen, ShieldCheck, AlertCircle, Search, Filter } from 'lucide-react';
+=======
+import { Loader2, Plus, Calculator, Globe, Edit, Trash2, Library, BookOpen, ShieldCheck, AlertCircle } from 'lucide-react';
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 import {
   Dialog,
   DialogContent,
@@ -155,6 +159,7 @@ const TaxesPage = () => {
         </div>
       </motion.div>
 
+<<<<<<< HEAD
       {/* Search & Filter */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
         <div className="relative w-full md:max-w-md">
@@ -172,6 +177,8 @@ const TaxesPage = () => {
         </div>
       </div>
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
       {/* Table */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -192,7 +199,11 @@ const TaxesPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
+<<<<<<< HEAD
         className="mt-12 relative z-10 overflow-hidden rounded-3xl p-8 border border-border bg-card/30 backdrop-blur-sm"
+=======
+        className="mt-12"
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
       >
         <div className="flex items-center gap-2 mb-6">
           <Library className="w-6 h-6 text-primary" />
@@ -201,6 +212,7 @@ const TaxesPage = () => {
         {/* Background Effects */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1080px] h-[1080px] opacity-40">
+<<<<<<< HEAD
             <div className="opacity-15">
               <ColorBends
                 rotation={45}
@@ -228,6 +240,34 @@ const TaxesPage = () => {
             </div>
             <h3 className="font-bold mb-2">India: GST & SGST</h3>
             <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+=======
+            <ColorBends
+              rotation={45}
+              speed={0.2}
+              colors={["#5227FF", "#FF9FFC", "#7cff67", "#ffffff"]}
+              transparent
+              autoRotate={0}
+              scale={1}
+              frequency={1}
+              warpStrength={1}
+              mouseInfluence={1}
+              parallax={0.5}
+              noise={0.1}
+            />
+          </div>
+        </div>
+        <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-5" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[128px] animate-pulse-soft" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/30 rounded-full blur-[128px] animate-pulse-soft delay-500" />
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl border border-border bg-card">
+            <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
+              <ShieldCheck className="w-6 h-6 text-orange-500" />
+            </div>
+            <h3 className="font-bold mb-2">India: GST & SGST</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
               Comprehensive Goods and Services Tax system. Dual GST model with CGST and SGST/UTGST applied concurrently.
               IGST applies for inter-state transactions.
             </p>
@@ -238,12 +278,21 @@ const TaxesPage = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="p-6 rounded-2xl border border-border bg-card/50 backdrop-blur-sm group hover:border-blue-500/50 transition-all duration-300">
             <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Globe className="w-6 h-6 text-blue-500" />
             </div>
             <h3 className="font-bold mb-2">European Union: VAT</h3>
             <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+=======
+          <div className="p-6 rounded-2xl border border-border bg-card">
+            <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+              <Globe className="w-6 h-6 text-blue-500" />
+            </div>
+            <h3 className="font-bold mb-2">European Union: VAT</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
               VAT rules vary by member state but follow the EU VAT Directive. One-Stop Shop (OSS) available for digital services across borders.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -252,12 +301,21 @@ const TaxesPage = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="p-6 rounded-2xl border border-border bg-card/50 backdrop-blur-sm group hover:border-primary/50 transition-all duration-300">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <AlertCircle className="w-6 h-6 text-primary" />
             </div>
             <h3 className="font-bold mb-2">USA: Sales Tax</h3>
             <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+=======
+          <div className="p-6 rounded-2xl border border-border bg-card">
+            <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+              <AlertCircle className="w-6 h-6 text-green-500" />
+            </div>
+            <h3 className="font-bold mb-2">USA: Sales Tax</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
               Jurisdiction-based tax where "Nexus" determines applicability. Varies significantly by state, county, and city levels.
             </p>
             <div className="flex flex-wrap gap-2">

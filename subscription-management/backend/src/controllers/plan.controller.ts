@@ -19,7 +19,11 @@ export const getPlan = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
         const plan = await prisma.plan.findUnique({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             include: { product: true, subscriptions: true },
         });
 
@@ -62,7 +66,11 @@ export const updatePlan = async (req: AuthRequest, res: Response) => {
         const { name, billing, price, status, subscribers } = req.body;
 
         const plan = await prisma.plan.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: {
                 ...(name && { name }),
                 ...(billing && { billing }),
@@ -83,7 +91,11 @@ export const updatePlan = async (req: AuthRequest, res: Response) => {
 export const deletePlan = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
+<<<<<<< HEAD
         await prisma.plan.delete({ where: { id: id as string } });
+=======
+        await prisma.plan.delete({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json({ message: 'Plan deleted successfully' });
     } catch (error) {
         console.error('Delete plan error:', error);

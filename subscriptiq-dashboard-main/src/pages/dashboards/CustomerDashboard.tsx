@@ -12,7 +12,10 @@ import {
   Sparkles,
   TrendingUp,
   AlertCircle,
+<<<<<<< HEAD
   Brain,
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 } from 'lucide-react';
 import DailySpendChart from '@/components/dashboard/DailySpendChart';
 
@@ -89,6 +92,7 @@ const CustomerDashboard = () => {
         </motion.div>
       </div>
 
+<<<<<<< HEAD
       {/* AI Insights Quick Link */}
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
@@ -112,6 +116,8 @@ const CustomerDashboard = () => {
         </Link>
       </motion.div>
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
       {/* Spending Analytics */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

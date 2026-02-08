@@ -17,7 +17,11 @@ export const getDiscounts = async (req: AuthRequest, res: Response) => {
 export const getDiscount = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
+<<<<<<< HEAD
         const discount = await prisma.discount.findUnique({ where: { id: id as string } });
+=======
+        const discount = await prisma.discount.findUnique({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
         if (!discount) {
             return res.status(404).json({ error: 'Discount not found' });
@@ -59,7 +63,11 @@ export const updateDiscount = async (req: AuthRequest, res: Response) => {
         const { name, code, type, value, status, usageCount, maxUses, validUntil } = req.body;
 
         const discount = await prisma.discount.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: {
                 ...(name && { name }),
                 ...(code && { code }),
@@ -82,7 +90,11 @@ export const updateDiscount = async (req: AuthRequest, res: Response) => {
 export const deleteDiscount = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
+<<<<<<< HEAD
         await prisma.discount.delete({ where: { id: id as string } });
+=======
+        await prisma.discount.delete({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json({ message: 'Discount deleted successfully' });
     } catch (error) {
         console.error('Delete discount error:', error);

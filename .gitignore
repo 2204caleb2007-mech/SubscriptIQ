@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules/
 .env
 .env.local
@@ -15,3 +16,27 @@ yarn-debug.log*
 yarn-error.log*
 .agent/
 .gemini/
+=======
+# Dependencies
+**/node_modules
+**/dist
+**/dist-ssr
+
+# Environments
+**/.env
+**/.env.local
+**/token.txt
+
+# Databases
+**/dev.db
+**/dev.db-journal
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0

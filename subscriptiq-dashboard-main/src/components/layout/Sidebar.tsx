@@ -36,6 +36,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { title: 'Dashboard', icon: LayoutDashboard, path: '/dashboard', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'] },
+<<<<<<< HEAD
   { title: 'Products', icon: Package, path: '/products', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'] },
   { title: 'Plans', icon: Calendar, path: '/plans', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'] },
   { title: 'Subscriptions', icon: CreditCard, path: '/subscriptions', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'] },
@@ -45,6 +46,17 @@ const navItems: NavItem[] = [
   { title: 'Taxes', icon: Calculator, path: '/taxes', roles: ['ADMIN'] },
   { title: 'Reports', icon: BarChart3, path: '/reports', roles: ['ADMIN', 'INTERNAL'] },
   { title: 'AI Insights', icon: Brain, path: '/ai-insights', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'], badge: 'AI' },
+=======
+  { title: 'Products', icon: Package, path: '/products', roles: ['ADMIN', 'INTERNAL'] },
+  { title: 'Plans', icon: Calendar, path: '/plans', roles: ['ADMIN', 'INTERNAL'] },
+  { title: 'Subscriptions', icon: CreditCard, path: '/subscriptions', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'] },
+  { title: 'Invoices', icon: FileText, path: '/invoices', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'] },
+  { title: 'Payments', icon: Receipt, path: '/payments', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'] },
+  { title: 'Discounts', icon: Percent, path: '/discounts', roles: ['ADMIN'] },
+  { title: 'Taxes', icon: Calculator, path: '/taxes', roles: ['ADMIN'] },
+  { title: 'Reports', icon: BarChart3, path: '/reports', roles: ['ADMIN', 'INTERNAL'] },
+  { title: 'AI Insights', icon: Brain, path: '/ai-insights', roles: ['ADMIN', 'INTERNAL'], badge: 'AI' },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
   { title: 'AI Assistant', icon: MessageSquare, path: '/ai-chat', roles: ['ADMIN', 'INTERNAL', 'CUSTOMER'], badge: 'AI' },
   { title: 'Automation', icon: Zap, path: '/automation', roles: ['ADMIN', 'INTERNAL'] },
   { title: 'Users', icon: Users, path: '/users', roles: ['ADMIN'] },
@@ -99,7 +111,11 @@ export const Sidebar = () => {
                 exit={{ opacity: 0, x: -10 }}
                 className="flex flex-col"
               >
+<<<<<<< HEAD
                 <span className="font-bold text-xl tracking-tight">SubscriptIQ</span>
+=======
+                <span className="font-bold text-xl tracking-tight">SubScriptIQ</span>
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
                 <span className="text-xs text-blue-200/60 font-medium tracking-wide">AI-Powered ERP</span>
               </motion.div>
             )}

@@ -1,15 +1,33 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
+<<<<<<< HEAD
 import { PageHeader, StatusBadge, StatCard } from '@/components/ui/custom-cards';
 import { DataTable } from '@/components/ui/data-table';
 import { Button } from '@/components/ui/button';
 import { Search, Filter, Plus, Percent, Tag, Calendar, Edit, Trash2, Loader2, Sparkles } from 'lucide-react';
+=======
+import { PageHeader, StatusBadge } from '@/components/ui/custom-cards';
+import { DataTable } from '@/components/ui/data-table';
+import { Button } from '@/components/ui/button';
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import api from '@/lib/api';
 import { formatCurrency } from '@/lib/utils';
 import {
+<<<<<<< HEAD
+=======
+  Plus,
+  Percent,
+  Tag,
+  Calendar,
+  Edit,
+  Trash2,
+  Loader2,
+} from 'lucide-react';
+import {
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
   Dialog,
   DialogContent,
   DialogHeader,
@@ -34,8 +52,11 @@ const DiscountsPage = () => {
   const [loading, setLoading] = useState(true);
   const [showCreateModal, setShowCreateModal] = useState(false);
 
+<<<<<<< HEAD
   const [searchQuery, setSearchQuery] = useState('');
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
   useEffect(() => {
     fetchDiscounts();
   }, []);
@@ -51,11 +72,14 @@ const DiscountsPage = () => {
     }
   };
 
+<<<<<<< HEAD
   const filteredDiscounts = discounts.filter(d =>
     d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     d.code.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
   const columns = [
     { key: 'id', label: 'Discount ID' },
     {
@@ -66,21 +90,31 @@ const DiscountsPage = () => {
             {item.type === 'percentage' ? <Percent className="w-5 h-5" /> : <Tag className="w-5 h-5" />}
           </div>
           <div>
+<<<<<<< HEAD
             <p className="font-medium text-sm md:text-base">{item.name}</p>
             <p className="text-xs text-muted-foreground font-mono bg-muted px-1 rounded inline-block mt-1">{item.code}</p>
+=======
+            <p className="font-medium">{item.name}</p>
+            <p className="text-xs text-muted-foreground">Code: {item.code}</p>
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
           </div>
         </div>
       )
     },
     {
       key: 'value', label: 'Discount', render: (item: Discount) => (
+<<<<<<< HEAD
         <span className="font-semibold text-primary">
+=======
+        <span className="font-medium">
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
           {item.type === 'percentage' ? `${item.value}%` : formatCurrency(item.value)}
         </span>
       )
     },
     {
       key: 'usageCount', label: 'Uses', render: (item: Discount) => (
+<<<<<<< HEAD
         <div className="flex flex-col gap-1">
           <div className="h-1.5 w-24 bg-muted rounded-full overflow-hidden">
             <div
@@ -90,6 +124,9 @@ const DiscountsPage = () => {
           </div>
           <span className="text-xs text-muted-foreground">{item.usageCount}{item.maxUses ? ` / ${item.maxUses}` : ''}</span>
         </div>
+=======
+        <span>{item.usageCount}{item.maxUses ? ` / ${item.maxUses}` : ''}</span>
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
       )
     },
     { key: 'validUntil', label: 'Valid Until', render: (item: Discount) => item.validUntil ? new Date(item.validUntil).toLocaleDateString() : 'No expiry' },
@@ -103,10 +140,17 @@ const DiscountsPage = () => {
     {
       key: 'actions', label: '', render: () => (
         <div className="flex items-center gap-1">
+<<<<<<< HEAD
           <Button variant="ghost" size="icon" className="h-8 w-8">
             <Edit className="w-4 h-4" />
           </Button>
           <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10">
+=======
+          <Button variant="ghost" size="sm">
+            <Edit className="w-4 h-4" />
+          </Button>
+          <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             <Trash2 className="w-4 h-4" />
           </Button>
         </div>
@@ -115,10 +159,17 @@ const DiscountsPage = () => {
   ];
 
   const stats = [
+<<<<<<< HEAD
     { label: 'Active Discounts', value: discounts.filter(d => d.status.toLowerCase() === 'active').length.toString(), icon: Tag, color: 'text-primary' },
     { label: 'Total Uses', value: discounts.reduce((acc, d) => acc + d.usageCount, 0).toLocaleString(), icon: Percent, color: 'text-accent' },
     { label: 'Expiring Soon', value: discounts.filter(d => d.validUntil && new Date(d.validUntil) < new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)).length.toString(), icon: Calendar, color: 'text-warning' },
     { label: 'Avg. Discount', value: discounts.length > 0 ? `${Math.round(discounts.reduce((acc, d) => acc + (d.type === 'percentage' ? d.value : 0), 0) / (discounts.filter(d => d.type === 'percentage').length || 1))}%` : '0%', icon: Sparkles, color: 'text-success' },
+=======
+    { label: 'Active Discounts', value: discounts.filter(d => d.status.toLowerCase() === 'active').length.toString(), icon: Tag },
+    { label: 'Total Uses', value: discounts.reduce((acc, d) => acc + d.usageCount, 0).toLocaleString(), icon: Percent },
+    { label: 'Expiring Soon', value: discounts.filter(d => d.validUntil && new Date(d.validUntil) < new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)).length.toString(), icon: Calendar },
+    { label: 'Avg. Discount', value: discounts.length > 0 ? `${Math.round(discounts.reduce((acc, d) => acc + (d.type === 'percentage' ? d.value : 0), 0) / (discounts.filter(d => d.type === 'percentage').length || 1))}%` : '0%', icon: Percent },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
   ];
 
   return (
@@ -181,6 +232,7 @@ const DiscountsPage = () => {
       />
 
       {/* Stats */}
+<<<<<<< HEAD
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {stats.map((stat, index) => (
           <StatCard
@@ -211,6 +263,27 @@ const DiscountsPage = () => {
             Filters
           </Button>
         </div>
+=======
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
+          return (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="p-4 rounded-xl bg-card border border-border"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <Icon className="w-5 h-5 text-muted-foreground" />
+              </div>
+              <p className="text-2xl font-bold">{stat.value}</p>
+              <p className="text-sm text-muted-foreground">{stat.label}</p>
+            </motion.div>
+          );
+        })}
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
       </div>
 
       {/* Table */}
@@ -218,14 +291,21 @@ const DiscountsPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
+<<<<<<< HEAD
         className="glass-card overflow-hidden border-border/50"
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
       >
         {loading ? (
           <div className="flex items-center justify-center h-[300px]">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
         ) : (
+<<<<<<< HEAD
           <DataTable data={filteredDiscounts} columns={columns} />
+=======
+          <DataTable data={discounts} columns={columns} />
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         )}
       </motion.div>
     </DashboardLayout>

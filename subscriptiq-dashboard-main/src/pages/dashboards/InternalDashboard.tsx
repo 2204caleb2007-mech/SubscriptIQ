@@ -14,8 +14,11 @@ import {
   ArrowRight,
   Zap,
   RefreshCw,
+<<<<<<< HEAD
   Brain,
   Sparkles,
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 } from 'lucide-react';
 
 const InternalDashboard = () => {
@@ -141,6 +144,7 @@ const InternalDashboard = () => {
         </motion.div>
       </div>
 
+<<<<<<< HEAD
       {/* AI Assistance Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -175,6 +179,8 @@ const InternalDashboard = () => {
         </div>
       </motion.div>
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
       {/* Activity & Automation */}
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Activity Feed */}
@@ -197,6 +203,7 @@ const InternalDashboard = () => {
                 transition={{ delay: 0.6 + index * 0.05 }}
                 className="flex items-start gap-3"
               >
+<<<<<<< HEAD
                 <div className={`mt-1 p-1.5 rounded-full ${activity.type === 'payment' ? 'bg-success/10 text-success' :
                     activity.type === 'automation' ? 'bg-accent/10 text-accent' :
                       'bg-muted text-muted-foreground'
@@ -204,6 +211,16 @@ const InternalDashboard = () => {
                   {activity.type === 'payment' ? <CheckCircle className="w-3 h-3" /> :
                     activity.type === 'automation' ? <Zap className="w-3 h-3" /> :
                       <AlertTriangle className="w-3 h-3" />}
+=======
+                <div className={`mt-1 p-1.5 rounded-full ${
+                  activity.type === 'payment' ? 'bg-success/10 text-success' :
+                  activity.type === 'automation' ? 'bg-accent/10 text-accent' :
+                  'bg-muted text-muted-foreground'
+                }`}>
+                  {activity.type === 'payment' ? <CheckCircle className="w-3 h-3" /> :
+                   activity.type === 'automation' ? <Zap className="w-3 h-3" /> :
+                   <AlertTriangle className="w-3 h-3" />}
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm">{activity.action}</p>

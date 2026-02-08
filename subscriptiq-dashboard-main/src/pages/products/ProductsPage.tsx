@@ -187,6 +187,7 @@ const ProductsPage = () => {
         <ShoppingCart className="w-6 h-6" />
       </motion.button>
 
+<<<<<<< HEAD
       {/* Search & Filter */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 sticky top-4 z-30 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/20">
         <div className="relative w-full md:max-w-md">
@@ -209,6 +210,34 @@ const ProductsPage = () => {
           </Button>
         </div>
       </div>
+=======
+      {/* Filters and Search */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 sticky top-4 z-30 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/20"
+      >
+        <div className="relative w-full md:w-96">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 bg-white/50 border-transparent focus:bg-white transition-all rounded-xl"
+          />
+        </div>
+        <div className="flex gap-2">
+          <Button variant="outline" className="rounded-xl border-dashed">
+            <Filter className="w-4 h-4 mr-2" />
+            Filter
+          </Button>
+          <Button variant="outline" className="rounded-xl border-dashed">
+            <TrendingUp className="w-4 h-4 mr-2" />
+            Sort: Best Selling
+          </Button>
+        </div>
+      </motion.div>
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
       {/* Products Grid */}
       <motion.div

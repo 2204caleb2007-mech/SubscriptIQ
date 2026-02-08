@@ -11,6 +11,7 @@ export const getSubscriptions = async (req: AuthRequest, res: Response) => {
             where.status = status;
         }
 
+<<<<<<< HEAD
         // Role-based filtering: Customers only see their own subscriptions
         if (req.user?.role === 'CUSTOMER') {
             const customer = await prisma.customer.findUnique({
@@ -23,6 +24,8 @@ export const getSubscriptions = async (req: AuthRequest, res: Response) => {
             }
         }
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         const subscriptions = await prisma.subscription.findMany({
             where,
             include: {
@@ -44,7 +47,11 @@ export const getSubscription = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
         const subscription = await prisma.subscription.findUnique({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             include: {
                 customer: true,
                 plan: { include: { product: true } },
@@ -56,6 +63,7 @@ export const getSubscription = async (req: AuthRequest, res: Response) => {
             return res.status(404).json({ error: 'Subscription not found' });
         }
 
+<<<<<<< HEAD
         // Role-based authorization: Customers can only see their own subscription
         if (req.user?.role === 'CUSTOMER') {
             const customer = await prisma.customer.findUnique({
@@ -66,6 +74,8 @@ export const getSubscription = async (req: AuthRequest, res: Response) => {
             }
         }
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json(subscription);
     } catch (error) {
         console.error('Get subscription error:', error);
@@ -105,7 +115,11 @@ export const updateSubscription = async (req: AuthRequest, res: Response) => {
         const { status, startDate, nextBilling, mrr } = req.body;
 
         const subscription = await prisma.subscription.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: {
                 ...(status && { status }),
                 ...(startDate && { startDate: new Date(startDate) }),
@@ -136,7 +150,11 @@ export const updateSubscriptionStatus = async (req: AuthRequest, res: Response) 
         }
 
         const subscription = await prisma.subscription.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: { status },
             include: {
                 customer: true,
@@ -154,7 +172,11 @@ export const updateSubscriptionStatus = async (req: AuthRequest, res: Response) 
 export const deleteSubscription = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
+<<<<<<< HEAD
         await prisma.subscription.delete({ where: { id: id as string } });
+=======
+        await prisma.subscription.delete({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json({ message: 'Subscription deleted successfully' });
     } catch (error) {
         console.error('Delete subscription error:', error);

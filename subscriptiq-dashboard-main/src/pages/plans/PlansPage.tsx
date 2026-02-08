@@ -11,12 +11,16 @@ import {
   Users,
   Check,
   Loader2,
+<<<<<<< HEAD
   Zap,
   Star,
   Shield,
   ArrowRight,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+=======
+} from 'lucide-react';
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
 interface Plan {
   id: string;
@@ -94,6 +98,7 @@ const PlansPage = () => {
           <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       ) : (
+<<<<<<< HEAD
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPlans.map((plan, index) => {
             const isYearly = plan.billing.toLowerCase() === 'yearly';
@@ -186,6 +191,63 @@ const PlansPage = () => {
               </motion.div>
             );
           })}
+=======
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredPlans.map((plan, index) => (
+            <motion.div
+              key={plan.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="p-6 rounded-xl bg-card border border-border card-hover"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h3 className="font-semibold text-lg">{plan.name}</h3>
+                  <p className="text-sm text-muted-foreground">{plan.product?.name || 'No Product'}</p>
+                </div>
+                <StatusBadge variant={plan.status.toLowerCase() === 'active' ? 'success' : 'default'}>
+                  {plan.status}
+                </StatusBadge>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl font-bold">{formatCurrency(plan.price)}</span>
+                  <span className="text-muted-foreground">/{plan.billing.toLowerCase() === 'yearly' ? 'year' : 'month'}</span>
+                </div>
+                {plan.billing.toLowerCase() === 'yearly' && (
+                  <p className="text-sm text-success mt-1">Save 17% vs monthly</p>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+                <Users className="w-4 h-4" />
+                <span>{(plan._count?.subscriptions || 0).toLocaleString()} subscribers</span>
+              </div>
+
+              <div className="space-y-3 mb-6">
+                {['Access to all features', '24/7 Support', 'API Access', 'Custom integrations'].slice(0, plan.billing.toLowerCase() === 'yearly' ? 4 : 3).map((feature, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm">
+                    <Check className="w-4 h-4 text-success" />
+                    {feature}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 pt-4 border-t border-border">
+                <Calendar className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground capitalize">{plan.billing} billing</span>
+              </div>
+
+              <div className="mt-4 flex gap-2">
+                <Button variant="outline" className="flex-1">View Details</Button>
+                <Button className="flex-1 bg-gradient-primary border-0">Edit Plan</Button>
+              </div>
+            </motion.div>
+          ))}
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         </div>
       )}
     </DashboardLayout>

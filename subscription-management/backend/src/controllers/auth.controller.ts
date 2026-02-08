@@ -33,7 +33,11 @@ export const register = async (req: AuthRequest, res: Response) => {
 
         // Generate JWT
         const token = jwt.sign(
+<<<<<<< HEAD
             { id: user.id, email: user.email, name: user.name, role: user.role },
+=======
+            { id: user.id, email: user.email, role: user.role },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             JWT_SECRET,
             { expiresIn: JWT_EXPIRES_IN as any }
         );
@@ -158,7 +162,11 @@ export const login = async (req: AuthRequest, res: Response) => {
 
         // Generate JWT
         const token = jwt.sign(
+<<<<<<< HEAD
             { id: user.id, email: user.email, name: user.name, role: user.role },
+=======
+            { id: user.id, email: user.email, role: user.role },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             JWT_SECRET,
             { expiresIn: JWT_EXPIRES_IN as any }
         );
@@ -207,7 +215,11 @@ export const googleAuth = async (req: AuthRequest, res: Response) => {
 
         // Generate JWT
         const token = jwt.sign(
+<<<<<<< HEAD
             { id: user.id, email: user.email, name: user.name, role: user.role },
+=======
+            { id: user.id, email: user.email, role: user.role },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             JWT_SECRET,
             { expiresIn: JWT_EXPIRES_IN as any }
         );
@@ -270,7 +282,11 @@ export const updateUser = async (req: AuthRequest, res: Response) => {
         }
 
         const user = await prisma.user.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data,
         });
 
@@ -296,7 +312,11 @@ export const deleteUser = async (req: AuthRequest, res: Response) => {
             return res.status(400).json({ error: 'Cannot delete your own account' });
         }
 
+<<<<<<< HEAD
         await prisma.user.delete({ where: { id: id as string } });
+=======
+        await prisma.user.delete({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json({ message: 'User deleted successfully' });
     } catch (error) {
         console.error('Delete user error:', error);

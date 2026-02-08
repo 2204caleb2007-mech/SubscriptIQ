@@ -17,7 +17,11 @@ export const getTaxes = async (req: AuthRequest, res: Response) => {
 export const getTax = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
+<<<<<<< HEAD
         const tax = await prisma.tax.findUnique({ where: { id: id as string } });
+=======
+        const tax = await prisma.tax.findUnique({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
         if (!tax) {
             return res.status(404).json({ error: 'Tax not found' });
@@ -57,7 +61,11 @@ export const updateTax = async (req: AuthRequest, res: Response) => {
         const { name, rate, region, status, appliesTo } = req.body;
 
         const tax = await prisma.tax.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: {
                 ...(name && { name }),
                 ...(rate !== undefined && { rate: parseFloat(rate) }),
@@ -77,7 +85,11 @@ export const updateTax = async (req: AuthRequest, res: Response) => {
 export const deleteTax = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
+<<<<<<< HEAD
         await prisma.tax.delete({ where: { id: id as string } });
+=======
+        await prisma.tax.delete({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json({ message: 'Tax deleted successfully' });
     } catch (error) {
         console.error('Delete tax error:', error);

@@ -21,7 +21,11 @@ export const getProduct = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
         const product = await prisma.product.findUnique({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             include: { plans: true },
         });
 
@@ -66,7 +70,11 @@ export const updateProduct = async (req: AuthRequest, res: Response) => {
         const { name, description, category, price, variants, status } = req.body;
 
         const product = await prisma.product.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: {
                 ...(name && { name }),
                 ...(description !== undefined && { description }),
@@ -89,7 +97,11 @@ export const deleteProduct = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
 
+<<<<<<< HEAD
         await prisma.product.delete({ where: { id: id as string } });
+=======
+        await prisma.product.delete({ where: { id } });
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
         res.json({ message: 'Product deleted successfully' });
     } catch (error) {

@@ -11,6 +11,7 @@ export const getInvoices = async (req: AuthRequest, res: Response) => {
             where.status = status;
         }
 
+<<<<<<< HEAD
         // Role-based filtering: Customers only see their own invoices
         if (req.user?.role === 'CUSTOMER') {
             const customer = await prisma.customer.findUnique({
@@ -24,6 +25,8 @@ export const getInvoices = async (req: AuthRequest, res: Response) => {
             }
         }
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         const invoices = await prisma.invoice.findMany({
             where,
             include: {
@@ -45,7 +48,11 @@ export const getInvoice = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
         const invoice = await prisma.invoice.findUnique({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             include: {
                 customer: true,
                 subscription: { include: { plan: { include: { product: true } } } },
@@ -57,6 +64,7 @@ export const getInvoice = async (req: AuthRequest, res: Response) => {
             return res.status(404).json({ error: 'Invoice not found' });
         }
 
+<<<<<<< HEAD
         // Role-based authorization: Customers can only see their own invoice
         if (req.user?.role === 'CUSTOMER') {
             const customer = await prisma.customer.findUnique({
@@ -67,6 +75,8 @@ export const getInvoice = async (req: AuthRequest, res: Response) => {
             }
         }
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json(invoice);
     } catch (error) {
         console.error('Get invoice error:', error);
@@ -106,7 +116,11 @@ export const updateInvoice = async (req: AuthRequest, res: Response) => {
         const { amount, status, dueDate, paidDate } = req.body;
 
         const invoice = await prisma.invoice.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: {
                 ...(amount !== undefined && { amount: parseFloat(amount) }),
                 ...(status && { status }),
@@ -137,7 +151,11 @@ export const updateInvoiceStatus = async (req: AuthRequest, res: Response) => {
         }
 
         const invoice = await prisma.invoice.update({
+<<<<<<< HEAD
             where: { id: id as string },
+=======
+            where: { id },
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             data: {
                 status,
                 ...(status === 'PAID' && { paidDate: new Date() }),

@@ -160,6 +160,7 @@ const SubscriptionsPage = () => {
         ))}
       </motion.div>
 
+<<<<<<< HEAD
       {/* Search & Filter */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
         <div className="relative w-full md:max-w-md">
@@ -178,6 +179,29 @@ const SubscriptionsPage = () => {
           </Button>
         </div>
       </div>
+=======
+      {/* Search */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="flex gap-4 mb-6"
+      >
+        <div className="relative flex-1 max-w-md">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            placeholder="Search subscriptions..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+        <Button variant="outline">
+          <Filter className="w-4 h-4 mr-2" />
+          More Filters
+        </Button>
+      </motion.div>
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
       {/* Table */}
       <motion.div
@@ -234,8 +258,13 @@ const SubscriptionsPage = () => {
                         className="flex flex-col items-center relative z-10"
                       >
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${status === 'completed' ? 'bg-success text-success-foreground' :
+<<<<<<< HEAD
                           status === 'current' ? 'bg-primary text-primary-foreground animate-pulse-soft' :
                             'bg-muted text-muted-foreground'
+=======
+                            status === 'current' ? 'bg-primary text-primary-foreground animate-pulse-soft' :
+                              'bg-muted text-muted-foreground'
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
                           }`}>
                           <Icon className="w-5 h-5" />
                         </div>

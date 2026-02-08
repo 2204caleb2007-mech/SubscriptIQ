@@ -13,6 +13,7 @@ const razorpay = new Razorpay({
 
 export const getPayments = async (req: AuthRequest, res: Response) => {
     try {
+<<<<<<< HEAD
         const where: any = {};
 
         // Role-based filtering: Customers only see their own payments
@@ -29,6 +30,9 @@ export const getPayments = async (req: AuthRequest, res: Response) => {
 
         const payments = await prisma.payment.findMany({
             where,
+=======
+        const payments = await prisma.payment.findMany({
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
             include: {
                 invoice: {
                     include: {
@@ -66,6 +70,7 @@ export const getPayment = async (req: AuthRequest, res: Response) => {
             return res.status(404).json({ error: 'Payment not found' });
         }
 
+<<<<<<< HEAD
         // Role-based authorization: Customers can only see their own payment
         if (req.user?.role === 'CUSTOMER') {
             const customer = await prisma.customer.findUnique({
@@ -76,6 +81,8 @@ export const getPayment = async (req: AuthRequest, res: Response) => {
             }
         }
 
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
         res.json(payment);
     } catch (error) {
         console.error('Get payment error:', error);
@@ -177,6 +184,7 @@ export const verifyPayment = async (req: AuthRequest, res: Response) => {
         }
 
         // 1. Find or create customer
+<<<<<<< HEAD
         // FORCED SECURITY: If logged in, use the authenticated user's email
         const targetEmail = (req.user?.role === 'CUSTOMER') ? req.user.email : (userEmail || 'guest@example.com');
         const targetName = (req.user?.role === 'CUSTOMER') ? req.user.name : (userName || 'Guest');
@@ -187,11 +195,22 @@ export const verifyPayment = async (req: AuthRequest, res: Response) => {
                 data: {
                     name: targetName,
                     email: targetEmail,
+=======
+        let customer = await prisma.customer.findUnique({ where: { email: userEmail } });
+        if (!customer) {
+            customer = await prisma.customer.create({
+                data: {
+                    name: userName || 'Guest',
+                    email: userEmail,
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
                     status: 'active'
                 }
             });
         }
+<<<<<<< HEAD
         console.log(`Processing payment for Customer: ${customer.email} (${customer.id})`);
+=======
+>>>>>>> 5f4cac2a1e7b0645f4d5862972bb98d2c7e4d7b0
 
         // 2. Calculate Totals with Tax and Discount
         const subtotal = items.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0);
